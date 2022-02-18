@@ -9,7 +9,7 @@ Sur quelle touche faut-il appuyer pour ajouter un avion ?
 Comment faire pour quitter le programme ?
 A quoi sert la touche 'F' ?
 
-C sert à créer un avion aléatoire. On peut quitter le programme avec X ou Q. La touche F permet de mettre la fenêtre en plein écran.
+- C sert à créer un avion aléatoire. On peut quitter le programme avec X ou Q. La touche F permet de mettre la fenêtre en plein écran.
 
 Ajoutez un avion à la simulation et attendez.
 Que est le comportement de l'avion ?
