@@ -13,7 +13,16 @@ A quoi sert la touche 'F' ?
 
 Ajoutez un avion à la simulation et attendez.
 Que est le comportement de l'avion ?
+
 Quelles informations s'affichent dans la console ?
+
+```
+DL7119 is now landing...
+now servicing DL7119...
+done servicing DL7119
+DL7119 lift off
+```
+
 
 Ajoutez maintenant quatre avions d'un coup dans la simulation.
 Que fait chacun des avions ?
