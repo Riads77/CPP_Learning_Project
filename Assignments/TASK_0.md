@@ -9,7 +9,7 @@ Sur quelle touche faut-il appuyer pour ajouter un avion ?
 Comment faire pour quitter le programme ?
 A quoi sert la touche 'F' ?
 
-- C sert à créer un avion aléatoire. On peut quitter le programme avec X ou Q. La touche F permet de mettre la fenêtre en plein écran.
+> C sert à créer un avion aléatoire. On peut quitter le programme avec X ou Q. La touche F permet de mettre la fenêtre en plein écran.
 
 Ajoutez un avion à la simulation et attendez.
 Que est le comportement de l'avion ?
@@ -27,13 +27,48 @@ DL7119 lift off
 Ajoutez maintenant quatre avions d'un coup dans la simulation.
 Que fait chacun des avions ?
 
+> Chaque avion fait la même chose, indépendamment d'un autre. Ils ne sont pas nécessairement synchronisés, ne viennent pas du même endroit et ne prennent pas la même trajectoire.
+
 ## B- Analyse du code
 
 Listez les classes du programme à la racine du dossier src/.
 Pour chacune d'entre elle, expliquez ce qu'elle représente et son rôle dans le programme.
 
+> A partir de src, nous avons un dossier GL qui répertorie les fichiers gl dont on a besoin, à savoir les classes Displayable, DynamicObject, ou encore Texture2D. Ils représentent respectivement les élements affichables, les objets dynamiques, et les textures en 2D à l'affichage.
+> Il y a également un dossier img qui gère l'interface graphique d'un point de vue numérique. la classe Image s'occupe de représenter une image, MediaPath permet de retrouver le chemin d'accès à une image dans l'OS.
+> Enfin, nous avons :
+> - AirCraftType : Représente les attributs physiques d'un avion.
+> - AirCraft : Représente un avion, en tant qu'objet dynamique et affichable. Il a son propre type d'avion, plus d'autres attributs comme une position, une vitesse etc.
+> - Airport : Représente un aéroport, également en tant qu'objet dynamique et affichable. Celui-ci est la représentation d'une tour et de terminaux.
+> - Point 2D et Point 3D : Représentation 2D ou 3D de points dans l'interface graphique.
+> - Runway : Représentation de la trajectoire d'un avion (en général en fonction d'un aéroport en l'occurence).
+> - Terminal : Représente le terminal d'un aéroport, qui stocke et gère le départ et les arrivées des avions.
+> - TowerSimulation : classe principale proposant la simulation d'une tour de contrôle autour de laquelle des avions partent et reviennent.
+> - Tower : Représente la tour d'un aéroport, associée à plusieurs terminaux.
+> - Waypoint : point 3D avec le statut de l'avion (au sol, en vol etc). Celui-ci est appelé WaypointType.
+
 Pour les classes `Tower`, `Aircaft`, `Airport` et `Terminal`, listez leurs fonctions-membre publiques et expliquez précisément à quoi elles servent.
 Réalisez ensuite un schéma présentant comment ces différentes classes intéragissent ensemble.
+
+> `Tower` :
+> - get_instructions : Produit les instructions que doit effectuer l'avion en paramètres.
+> - arrived_at_terminal : Change le statut d'un avion quand il arrive dans un terminal.
+> `Aircaft` :
+> - get_flight_num : accesseur pour récupérer le numéro de vol d'un avion.
+> - distance_to : Renvoie la distance entre l'avion et un point donné.
+> - display : Affiche l'avion.
+> - move : Déplace l'avion.
+> `Airport` :
+> - get_tower : Renvoie la tour associée à un aéroport.
+> - display : Affiche l'aéroport.
+> - move : Actualise le nombre de services réalisés par chaque avion de chaque terminal de l'aéroport.
+> `Terminal` :
+> - in_use : Vérifie qu'au moins un avion est associé à un terminal.
+> - is_servicing : Vérifie que l'avion courant est en service.
+> - assign_craft : Assigne un avion à un terminal.
+> - start_service : Démarre le service.
+> - finish_service : Arrête le service.
+> - move : Augmente le nombre de services effectué par l'avion courant dans le terminal.
 
 Quelles classes et fonctions sont impliquées dans la génération du chemin d'un avion ?
 Quel conteneur de la librairie standard a été choisi pour représenter le chemin ?
